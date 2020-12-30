@@ -12,7 +12,6 @@ import com.example.cs496_tabbed.LanguageActivity
 import com.example.cs496_tabbed.R
 import com.example.cs496_tabbed.ThemeActivity
 
-
 class FreeFragment : ListFragment() {
     val settings = arrayOf("Language", "Set Theme Color")
     override fun onCreateView(
@@ -26,9 +25,6 @@ class FreeFragment : ListFragment() {
             activity!!.applicationContext, android.R.layout.simple_list_item_1, settings
         )
         listAdapter = adapter
-
-        //val listview = view.findViewById<ListView>(android.R.id.list)
-        //listview.setOnItemClickListener(listview.onItemClickListener)
 
         return view
     }
