@@ -1,6 +1,7 @@
 package com.example.cs496_tabbed.fragments
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -21,7 +22,8 @@ class GalleryFragment : Fragment(), View.OnClickListener {
         return myView
     }
     override fun onClick(v: View) {
-        Toast.makeText(activity?.applicationContext, "Beach", Toast.LENGTH_SHORT).show()
+        Toast.makeText(activity!!.baseContext, "Beach", Toast.LENGTH_SHORT).show()
+        Log.d("TEST", "TEST")
     }
 
 }
