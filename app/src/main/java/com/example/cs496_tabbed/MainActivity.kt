@@ -61,14 +61,14 @@ class MainActivity : AppCompatActivity() {
         val adapter = ViewPagerAdapter(supportFragmentManager)
         adapter.addFragment(ContactsFragment(), "Contacts")
         adapter.addFragment(GalleryFragment(), "Gallery")
-        adapter.addFragment(FreeFragment(), "Free")
+        adapter.addFragment(FreeFragment(), "Settings")
 
         viewPager.adapter = adapter
         tabs.setupWithViewPager(viewPager)
 
         tabs.getTabAt(0)!!.setIcon(R.drawable.ic_baseline_contacts_24)
         tabs.getTabAt(1)!!.setIcon(R.drawable.ic_baseline_photo_library_24)
-        tabs.getTabAt(2)!!.setIcon(R.drawable.ic_baseline_tablet_24)
+        tabs.getTabAt(2)!!.setIcon(R.drawable.ic_baseline_settings_24)
     }
 
 }

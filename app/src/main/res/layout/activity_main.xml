@@ -28,6 +28,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="?attr/colorPrimary"
+            app:tabTextAppearance="@style/CustomTabStyle"
             app:tabGravity="fill"
             app:tabInlineLabel="true"
             app:tabTextColor="@android:color/white"
