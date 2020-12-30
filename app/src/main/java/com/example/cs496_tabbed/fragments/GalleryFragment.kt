@@ -1,6 +1,5 @@
 package com.example.cs496_tabbed.fragments
 
-import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
@@ -23,9 +22,8 @@ class GalleryFragment : Fragment(), View.OnClickListener {
         return myView
     }
     override fun onClick(v: View) {
-        if(v.id == R.id.image1) {
-            //클릭했을때 띄울 수 있는지
-            Log.d("TEST", "TEST")
-        }
+        Toast.makeText(activity!!.baseContext, "Beach", Toast.LENGTH_SHORT).show()
+        Log.d("TEST", "TEST")
     }
+
 }
