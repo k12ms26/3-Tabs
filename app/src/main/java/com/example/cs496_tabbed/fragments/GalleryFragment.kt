@@ -1,16 +1,17 @@
 package com.example.cs496_tabbed.fragments
 
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
-import android.widget.Toast
 import androidx.fragment.app.Fragment
+import com.example.cs496_tabbed.GalleryActivity
 import com.example.cs496_tabbed.R
 
-class GalleryFragment : Fragment(), View.OnClickListener {
+class GalleryFragment : Fragment(){
     var myButton: ImageView? = null
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -18,12 +19,17 @@ class GalleryFragment : Fragment(), View.OnClickListener {
     ): View {
         val myView: View = inflater.inflate(R.layout.fragment_gallery, container, false)
         myButton = myView.findViewById<View>(R.id.image1) as ImageView
-        myButton!!.setOnClickListener(this)
+        myButton!!.setOnClickListener(View.OnClickListener {
+            val intent2 = Intent(requireActivity(), GalleryActivity::class.java)
+            requireActivity().startActivity(intent2)
+        })
         return myView
     }
-    override fun onClick(v: View) {
-        Toast.makeText(activity!!.baseContext, "Beach", Toast.LENGTH_SHORT).show()
-        Log.d("TEST", "TEST")
+    fun onClick(v: View) {
+        if(v.id == R.id.image1) {
+            val intent2 = Intent(requireContext(), GalleryActivity::class.java)
+            startActivity(intent2)
+            Log.d("test","test")
+        }
     }
-
 }
