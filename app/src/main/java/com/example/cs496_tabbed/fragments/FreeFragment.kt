@@ -27,8 +27,8 @@ class FreeFragment : ListFragment() {
         )
         listAdapter = adapter
 
-        val listview = view.findViewById<ListView>(android.R.id.list)
-        listview.setOnItemClickListener(listview.onItemClickListener)
+        //val listview = view.findViewById<ListView>(android.R.id.list)
+        //listview.setOnItemClickListener(listview.onItemClickListener)
 
         return view
     }
