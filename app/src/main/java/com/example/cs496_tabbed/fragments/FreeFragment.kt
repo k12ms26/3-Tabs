@@ -11,6 +11,7 @@ import androidx.fragment.app.ListFragment
 import com.example.cs496_tabbed.LanguageActivity
 import com.example.cs496_tabbed.R
 import com.example.cs496_tabbed.ThemeActivity
+import kotlin.math.log
 
 class FreeFragment : ListFragment() {
     val settings = arrayOf("Language", "Set Theme Color")
