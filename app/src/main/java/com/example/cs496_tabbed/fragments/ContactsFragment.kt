@@ -98,8 +98,6 @@ class ContactsFragment : ListFragment() {
 
         startActivity(Intent.createChooser(intent, "Share contact info to : "))
 
-        Log.d("Number", NumberArray[position].toString()) // receive a phone number in string
-
     }
 
 }
