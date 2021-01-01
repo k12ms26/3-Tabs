@@ -11,6 +11,7 @@ import androidx.fragment.app.ListFragment
 import com.example.cs496_tabbed.LanguageActivity
 import com.example.cs496_tabbed.R
 import com.example.cs496_tabbed.ThemeActivity
+import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import kotlin.math.log
 
 class FreeFragment : ListFragment() {
@@ -41,18 +42,5 @@ class FreeFragment : ListFragment() {
         }
 
     }
-
-    /*
-    override fun onListItemClick(l: ListView, v: View, position: Int, id: Int) {
-        if(position == 0){
-            Toast.makeText(activity?.baseContext, "Clicked 1", Toast.LENGTH_SHORT).show()
-        }
-        if(position == 1){
-            Toast.makeText(activity?.baseContext, "Clicked 2", Toast.LENGTH_SHORT).show()
-        }
-        Log.d("TEST", "TEST")
-    }*/
-
-
 
 }

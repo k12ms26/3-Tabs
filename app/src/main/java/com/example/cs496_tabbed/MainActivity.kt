@@ -1,7 +1,12 @@
 package com.example.cs496_tabbed
 
+import android.content.Context
+import android.content.Intent
+import android.content.SharedPreferences
 import android.content.pm.PackageManager
 import android.os.Bundle
+import android.util.Log
+import android.view.View
 import android.widget.Toast
 import com.google.android.material.tabs.TabLayout
 import androidx.viewpager.widget.ViewPager
@@ -14,12 +19,21 @@ import com.example.cs496_tabbed.fragments.GalleryFragment
 import com.example.cs496_tabbed.fragments.adapters.ViewPagerAdapter
 
 
-class MainActivity : AppCompatActivity() {
-
+open class MainActivity : AppCompatActivity() {
+    companion object{
+        var Lang = "Korean"
+        var Selected_Color = "Color0"
+    }
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
 
+        when (Selected_Color) {
+            "Color0" ->  theme.applyStyle(R.style.Color0, true)
+            "Color1" ->  theme.applyStyle(R.style.Color1, true)
+            "Color2" ->  theme.applyStyle(R.style.Color2, true)
+        }
+
+        setContentView(R.layout.activity_main)
         // Asks permission to access Contacts
         if (ContextCompat.checkSelfPermission(this@MainActivity,
                 android.Manifest.permission.READ_CONTACTS) != PackageManager.PERMISSION_GRANTED) {
@@ -62,9 +76,17 @@ class MainActivity : AppCompatActivity() {
         val tabs = findViewById<TabLayout>(R.id.tabs)
 
         val adapter = ViewPagerAdapter(supportFragmentManager)
-        adapter.addFragment(ContactsFragment(), "Contacts")
-        adapter.addFragment(GalleryFragment(), "Gallery")
-        adapter.addFragment(FreeFragment(), "Settings")
+
+        when(Lang){
+            "Korean"-> {adapter.addFragment(ContactsFragment(), applicationContext.getString(R.string.tab_Kor_1))
+                        adapter.addFragment(GalleryFragment(), applicationContext.getString(R.string.tab_Kor_2))
+                        adapter.addFragment(FreeFragment(), applicationContext.getString(R.string.tab_Kor_3))
+                        }
+            "English"-> {adapter.addFragment(ContactsFragment(), applicationContext.getString(R.string.tab_Eng_1))
+                adapter.addFragment(GalleryFragment(), applicationContext.getString(R.string.tab_Eng_2))
+                adapter.addFragment(FreeFragment(), applicationContext.getString(R.string.tab_Eng_3))
+            }
+        }
 
         viewPager.adapter = adapter
         tabs.setupWithViewPager(viewPager)
@@ -74,4 +96,12 @@ class MainActivity : AppCompatActivity() {
         tabs.getTabAt(2)!!.setIcon(R.drawable.ic_baseline_settings_24)
     }
 
+
+    override fun onRestart() {
+        super.onRestart()
+        val intent = intent // from getIntent()
+        intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION)
+        finish()
+        startActivity(intent)
+    }
 }

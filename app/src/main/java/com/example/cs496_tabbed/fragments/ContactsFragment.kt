@@ -35,6 +35,7 @@ class ContactsFragment : ListFragment() {
         val to = intArrayOf(android.R.id.text1, android.R.id.text2)
         val simple: SimpleCursorAdapter = SimpleCursorAdapter(activity, android.R.layout.simple_list_item_2, cursor, from, to)
 
+
         listAdapter = simple
 
         // Bring in Contacts info to build an array of names in contacts

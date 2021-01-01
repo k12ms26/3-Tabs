@@ -6,14 +6,45 @@
     android:layout_height="match_parent"
     tools:context=".ThemeActivity">
 
-    <TextView
-        android:id="@+id/textView2"
+
+    <Button
+        android:id="@+id/Color0"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Theme Activity"
-        android:textSize="50sp"
+        android:text="Button0"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:onClick="onClick"/>
+
+    <Button
+        android:id="@+id/Color1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Button1"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/Color0"
+        android:onClick="onClick"/>
+
+    <Button
+        android:id="@+id/Color2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:onClick="onClick"
+        android:text="Button2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/Color1" />
+
+    <Button
+        android:id="@+id/exit"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Button"
+        android:onClick="onClick"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/Color2" />
 </androidx.constraintlayout.widget.ConstraintLayout>

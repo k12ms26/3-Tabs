@@ -27,16 +27,5 @@ class GalleryFragment : Fragment(){
         }
         return myView
     }
-    /*
-    fun onClick(v: View) {
-        if(v.id == R.id.image2) {
-            val intent2 = Intent(v.context, GalleryActivity::class.java)
-            startActivity(intent2)
-            Log.d("TEST","TEST")
-        }
-    }
-
-     */
-
 
 }
