@@ -49,7 +49,6 @@ class ContactsFragment : ListFragment() {
             val contactNumber = cursor.getString(numberFieldColumnIndex)
             NameFromContacts[i] = contactName
             NumberFromContacts[i] = contactNumber
-
             i++
         }
         NumberArray = NumberFromContacts    // Assign array of numbers from contacts

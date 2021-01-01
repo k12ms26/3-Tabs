@@ -7,6 +7,7 @@ import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
 import android.widget.ArrayAdapter
+import android.widget.ListView
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
@@ -15,37 +16,111 @@ import kotlinx.android.synthetic.main.activity_settings.*
 import java.util.*
 
 class SettingsActivity : AppCompatActivity() {
+    var listOfSet = mutableListOf<String>()
+    val listOfSet_eng = mutableListOf("Edit Date", "Edit Time", "Browser", "Finish App")
+    val listOfSet_kor = mutableListOf("날짜 수정", "시간 수정", "브라우저", "앱 종료")
+    val listOfSet_chi = mutableListOf("日期修正","时间修正","浏览器","结束") // NEED MODIFICATION
+    val listOfSet_fra = mutableListOf("Modification la date", "Modification du temps","logiciel de navigation","Fin") // NEED MODIFICATION
+    val listOfSet_esp = mutableListOf("modificación de fecha", "modificación de tiempo","Navegador","conclusión") // NEED MODIFICATION
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        when (MainActivity.Selected_Color) {
+            "Color0" ->  theme.applyStyle(R.style.Color0, true)
+            "Color1" ->  theme.applyStyle(R.style.Color1, true)
+            "Color2" ->  theme.applyStyle(R.style.Color2, true)
+            "Color3" ->  theme.applyStyle(R.style.Color3, true)
+            "Color4" ->  theme.applyStyle(R.style.Color4, true)
+            "Color5" ->  theme.applyStyle(R.style.Color5, true)
+            "Color6" ->  theme.applyStyle(R.style.Color6, true)
+            "Color7" ->  theme.applyStyle(R.style.Color7, true)
+            "Color8" ->  theme.applyStyle(R.style.Color8, true)
+        }
+
+        when(MainActivity.Lang){
+            "eng" -> listOfSet = listOfSet_eng
+            "kor" -> listOfSet = listOfSet_kor
+            "chi" -> listOfSet = listOfSet_chi
+            "fra" -> listOfSet = listOfSet_fra
+            "esp" -> listOfSet = listOfSet_esp
+        }
+
         setContentView(R.layout.activity_settings)
-        val items = mutableListOf<String>()
-        items.add("날짜 수정")
-        items.add("시간 수정")
-        items.add("브라우저")
-        items.add("앱 종료")
-
-        val adapter = ArrayAdapter(this, android.R.layout.simple_list_item_1, items)
-        listview.adapter = adapter
-        listview.setOnItemClickListener { parent, view, position, id ->
-            val item = parent.getItemAtPosition(position)
-
-            when (item.toString()) {
-                "앱 종료" -> showAlert()
-                "날짜 수정" -> showDatePicker()
-                "시간 수정" -> showTimePicker()
-                "브라우저" -> showWeb()
+        /*val items = mutableListOf<String>()
+        items.add("Edit Date")
+        items.add("Edit Time")
+        items.add("Browser")
+        items.add("Finish App")*/
+        val listView = findViewById<ListView>(R.id.Settingslistview)
+        val adapter = ArrayAdapter(this, android.R.layout.simple_list_item_1, listOfSet)
+        listView.adapter = adapter
+        listView.setOnItemClickListener { parent, view, position, id ->
+            when(position){
+                0 -> showDatePicker()
+                1 -> showTimePicker()
+                2 -> showWeb()
+                3 -> showAlert()
             }
+
+            /*when (item.toString()) {
+                "Edit Date" -> showDatePicker()
+                "Edit Time" -> showDatePicker()
+                "Browser" -> showDatePicker()
+                "Finish App" -> showDatePicker()
+            }*/
         }
     }
     private fun showAlert() {
-        AlertDialog.Builder(this)
-            .setTitle("앱 종료")
-            .setPositiveButton("종료") { dialogInterface: DialogInterface, i: Int ->
-                ActivityCompat.finishAffinity(this)
-                System.exit(0)
-            }
-            .setNegativeButton("취소") { dialogInterface: DialogInterface, i: Int -> }
-            .show()
+        if(listOfSet == listOfSet_eng){
+            AlertDialog.Builder(this)
+                .setTitle("Do you want to Finish App?")
+                .setPositiveButton("Finish") { dialogInterface: DialogInterface, i: Int ->
+                    ActivityCompat.finishAffinity(this)
+                    System.exit(0)
+                }
+                .setNegativeButton("Cancel") { dialogInterface: DialogInterface, i: Int -> }
+                .show()
+        }
+        else if(listOfSet == listOfSet_kor){
+            AlertDialog.Builder(this)
+                .setTitle("앱을 종료하시겠습니까?")
+                .setPositiveButton("종료") { dialogInterface: DialogInterface, i: Int ->
+                    ActivityCompat.finishAffinity(this)
+                    System.exit(0)
+                }
+                .setNegativeButton("취소") { dialogInterface: DialogInterface, i: Int -> }
+                .show()
+        }
+        else if(listOfSet == listOfSet_chi){
+            AlertDialog.Builder(this)
+                .setTitle("App要结束市场吗？")
+                .setPositiveButton("结束") { dialogInterface: DialogInterface, i: Int ->
+                    ActivityCompat.finishAffinity(this)
+                    System.exit(0)
+                }
+                .setNegativeButton("取消") { dialogInterface: DialogInterface, i: Int -> }
+                .show()
+        }
+        else if(listOfSet == listOfSet_fra){
+            AlertDialog.Builder(this)
+                .setTitle("Voulez-vous terminer l'application ?")
+                .setPositiveButton("Fin") { dialogInterface: DialogInterface, i: Int ->
+                    ActivityCompat.finishAffinity(this)
+                    System.exit(0)
+                }
+                .setNegativeButton("Annuler") { dialogInterface: DialogInterface, i: Int -> }
+                .show()
+        }
+        else{
+            AlertDialog.Builder(this)
+                .setTitle("¿Podrías cerrar la aplicación?")
+                .setPositiveButton("conclusión") { dialogInterface: DialogInterface, i: Int ->
+                    ActivityCompat.finishAffinity(this)
+                    System.exit(0)
+                }
+                .setNegativeButton("retractación") { dialogInterface: DialogInterface, i: Int -> }
+                .show()
+        }
     }
 
     private fun showDatePicker() {

@@ -55,7 +55,6 @@ open class ThemeActivity : AppCompatActivity() {
         setContentView(R.layout.activity_theme)
 
 
-
         var listOfTheme = arrayOf<String>()
         when(Lang){
             "eng" -> listOfTheme = listOfTheme_eng
