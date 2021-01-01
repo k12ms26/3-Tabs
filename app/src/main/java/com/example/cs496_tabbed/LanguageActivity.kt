@@ -37,19 +37,19 @@ open class LanguageActivity : AppCompatActivity() {
         listView.setOnItemClickListener { parent, view, position, id ->
             when(listOfLanguage[position]){
                 "English" -> {Lang = "eng"
-                              textView.text = "Language: English"
+                    textView.text = "Language: English"
                 }
                 "한국어" -> {Lang = "kor"
-                            textView.text = "언어: 한국어"
+                    textView.text = "언어: 한국어"
                 }
                 "中文" -> {Lang = "chi"
-                            textView.text = "语言: 中文"
+                    textView.text = "语言: 中文"
                 }
                 "Français" -> {Lang = "fra"
-                            textView.text = "La langue: Français"
+                    textView.text = "La langue: Français"
                 }
                 "Español" -> {Lang = "esp"
-                            textView.text = "Lengua: Español"
+                    textView.text = "Lengua: Español"
                 }
             }
         }

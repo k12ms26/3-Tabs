@@ -62,11 +62,8 @@ class ContactsFragment : ListFragment() {
             val selectednumber = NumberFromContacts[position]
             Log.d("NUMBER", selectednumber.toString())
         }
-
-
         lateinit var searchView: SearchView
         //search related from here
-
         val search = view.findViewById<SearchView>(R.id.searchView)
         search.setOnQueryTextListener(object : SearchView.OnQueryTextListener{
             override fun onQueryTextSubmit(query: String?): Boolean {

@@ -20,43 +20,56 @@ import com.example.cs496_tabbed.fragments.adapters.ViewPagerAdapter
 
 
 open class MainActivity : AppCompatActivity() {
-    companion object{
+    companion object {
         var Lang = "eng"
         var Selected_Color = "Color0"
     }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
         when (Selected_Color) {
-            "Color0" ->  theme.applyStyle(R.style.Color0, true)
-            "Color1" ->  theme.applyStyle(R.style.Color1, true)
-            "Color2" ->  theme.applyStyle(R.style.Color2, true)
-            "Color3" ->  theme.applyStyle(R.style.Color3, true)
-            "Color4" ->  theme.applyStyle(R.style.Color4, true)
-            "Color5" ->  theme.applyStyle(R.style.Color5, true)
-            "Color6" ->  theme.applyStyle(R.style.Color6, true)
-            "Color7" ->  theme.applyStyle(R.style.Color7, true)
-            "Color8" ->  theme.applyStyle(R.style.Color8, true)
+            "Color0" -> theme.applyStyle(R.style.Color0, true)
+            "Color1" -> theme.applyStyle(R.style.Color1, true)
+            "Color2" -> theme.applyStyle(R.style.Color2, true)
+            "Color3" -> theme.applyStyle(R.style.Color3, true)
+            "Color4" -> theme.applyStyle(R.style.Color4, true)
+            "Color5" -> theme.applyStyle(R.style.Color5, true)
+            "Color6" -> theme.applyStyle(R.style.Color6, true)
+            "Color7" -> theme.applyStyle(R.style.Color7, true)
+            "Color8" -> theme.applyStyle(R.style.Color8, true)
         }
 
         setContentView(R.layout.activity_main)
         // Asks permission to access Contacts
-        if (ContextCompat.checkSelfPermission(this@MainActivity,
-                android.Manifest.permission.READ_CONTACTS) != PackageManager.PERMISSION_GRANTED) {
-            if (ActivityCompat.shouldShowRequestPermissionRationale(this@MainActivity,
-                    android.Manifest.permission.READ_CONTACTS)) {
-                ActivityCompat.requestPermissions(this@MainActivity,
-                    arrayOf(android.Manifest.permission.READ_CONTACTS), 1)
+        if (ContextCompat.checkSelfPermission(
+                this@MainActivity,
+                android.Manifest.permission.READ_CONTACTS
+            ) != PackageManager.PERMISSION_GRANTED
+        ) {
+            if (ActivityCompat.shouldShowRequestPermissionRationale(
+                    this@MainActivity,
+                    android.Manifest.permission.READ_CONTACTS
+                )
+            ) {
+                ActivityCompat.requestPermissions(
+                    this@MainActivity,
+                    arrayOf(android.Manifest.permission.READ_CONTACTS), 1
+                )
             } else {
-                ActivityCompat.requestPermissions(this@MainActivity,
-                    arrayOf(android.Manifest.permission.READ_CONTACTS), 1)
+                ActivityCompat.requestPermissions(
+                    this@MainActivity,
+                    arrayOf(android.Manifest.permission.READ_CONTACTS), 1
+                )
             }
         }
         setUpTabs()
     }
 
-    override fun onRequestPermissionsResult(requestCode: Int, permissions: Array<String>,
-                                            grantResults: IntArray) {
+    override fun onRequestPermissionsResult(
+        requestCode: Int, permissions: Array<String>,
+        grantResults: IntArray
+    ) {
         when (requestCode) {
             1 -> {
                 if (grantResults.isNotEmpty() && grantResults[0] ==
@@ -77,32 +90,83 @@ open class MainActivity : AppCompatActivity() {
             }
         }
     }
-    private fun setUpTabs(){
+
+    private fun setUpTabs() {
         val viewPager = findViewById<ViewPager>(R.id.view_pager)
         val tabs = findViewById<TabLayout>(R.id.tabs)
 
         val adapter = ViewPagerAdapter(supportFragmentManager)
 
-        when(Lang){
-            "kor"-> {adapter.addFragment(ContactsFragment(), applicationContext.getString(R.string.tab_Kor_1))
-                        adapter.addFragment(GalleryFragment(), applicationContext.getString(R.string.tab_Kor_2))
-                        adapter.addFragment(FreeFragment(), applicationContext.getString(R.string.tab_Kor_3))
+        when (Lang) {
+            "kor" -> {
+                adapter.addFragment(
+                    ContactsFragment(),
+                    applicationContext.getString(R.string.tab_Kor_1)
+                )
+                adapter.addFragment(
+                    GalleryFragment(),
+                    applicationContext.getString(R.string.tab_Kor_2)
+                )
+                adapter.addFragment(
+                    FreeFragment(),
+                    applicationContext.getString(R.string.tab_Kor_3)
+                )
             }
-            "eng"-> {adapter.addFragment(ContactsFragment(), applicationContext.getString(R.string.tab_Eng_1))
-                        adapter.addFragment(GalleryFragment(), applicationContext.getString(R.string.tab_Eng_2))
-                        adapter.addFragment(FreeFragment(), applicationContext.getString(R.string.tab_Eng_3))
+            "eng" -> {
+                adapter.addFragment(
+                    ContactsFragment(),
+                    applicationContext.getString(R.string.tab_Eng_1)
+                )
+                adapter.addFragment(
+                    GalleryFragment(),
+                    applicationContext.getString(R.string.tab_Eng_2)
+                )
+                adapter.addFragment(
+                    FreeFragment(),
+                    applicationContext.getString(R.string.tab_Eng_3)
+                )
             }
-            "chi" -> {adapter.addFragment(ContactsFragment(), applicationContext.getString(R.string.tab_Chi_1))
-                        adapter.addFragment(GalleryFragment(), applicationContext.getString(R.string.tab_Chi_2))
-                        adapter.addFragment(FreeFragment(), applicationContext.getString(R.string.tab_Chi_3))
+            "chi" -> {
+                adapter.addFragment(
+                    ContactsFragment(),
+                    applicationContext.getString(R.string.tab_Chi_1)
+                )
+                adapter.addFragment(
+                    GalleryFragment(),
+                    applicationContext.getString(R.string.tab_Chi_2)
+                )
+                adapter.addFragment(
+                    FreeFragment(),
+                    applicationContext.getString(R.string.tab_Chi_3)
+                )
             }
-            "fra" -> {adapter.addFragment(ContactsFragment(), applicationContext.getString(R.string.tab_Fra_1))
-                    adapter.addFragment(GalleryFragment(), applicationContext.getString(R.string.tab_Fra_2))
-                    adapter.addFragment(FreeFragment(), applicationContext.getString(R.string.tab_Fra_3))
+            "fra" -> {
+                adapter.addFragment(
+                    ContactsFragment(),
+                    applicationContext.getString(R.string.tab_Fra_1)
+                )
+                adapter.addFragment(
+                    GalleryFragment(),
+                    applicationContext.getString(R.string.tab_Fra_2)
+                )
+                adapter.addFragment(
+                    FreeFragment(),
+                    applicationContext.getString(R.string.tab_Fra_3)
+                )
             }
-            "esp" -> {adapter.addFragment(ContactsFragment(), applicationContext.getString(R.string.tab_Esp_1))
-                    adapter.addFragment(GalleryFragment(), applicationContext.getString(R.string.tab_Esp_2))
-                    adapter.addFragment(FreeFragment(), applicationContext.getString(R.string.tab_Esp_3))
+            "esp" -> {
+                adapter.addFragment(
+                    ContactsFragment(),
+                    applicationContext.getString(R.string.tab_Esp_1)
+                )
+                adapter.addFragment(
+                    GalleryFragment(),
+                    applicationContext.getString(R.string.tab_Esp_2)
+                )
+                adapter.addFragment(
+                    FreeFragment(),
+                    applicationContext.getString(R.string.tab_Esp_3)
+                )
             }
         }
 

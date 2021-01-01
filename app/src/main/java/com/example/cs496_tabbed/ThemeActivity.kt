@@ -102,7 +102,6 @@ open class ThemeActivity : AppCompatActivity() {
             "Color1" ->  theme.applyStyle(R.style.Color1, true)
             "Color2" ->  theme.applyStyle(R.style.Color2, true)
         }
-
     }
     */
 }

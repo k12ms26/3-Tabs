@@ -7,7 +7,6 @@
     tools:context=".LanguageActivity"
     android:orientation="vertical">
 
-
     <TextView
         android:id="@+id/LanguagetextView"
         android:layout_width="match_parent"
