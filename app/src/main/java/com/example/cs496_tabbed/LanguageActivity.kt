@@ -15,7 +15,7 @@ open class LanguageActivity : AppCompatActivity() {
     fun onClick(view: View){
         when(view.id){
             R.id.Kor -> Lang = "Korean"
-            R.id.Eng -> Lang = "Eng"
+            R.id.Eng -> Lang = "English"
         }
     }
 }
