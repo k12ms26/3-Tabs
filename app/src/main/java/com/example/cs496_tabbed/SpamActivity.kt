@@ -31,5 +31,7 @@ class SpamActivity : AppCompatActivity() {
         }
 
         setContentView(R.layout.activity_spam)
+
+
     }
 }

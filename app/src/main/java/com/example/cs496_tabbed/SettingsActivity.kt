@@ -14,16 +14,17 @@ import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
+import com.example.cs496_tabbed.game.GameMainActivity
 import kotlinx.android.synthetic.main.activity_settings.*
 import java.util.*
 
 class SettingsActivity : AppCompatActivity() {
     var listOfSet = mutableListOf<String>()
-    val listOfSet_eng = mutableListOf("Edit Date", "Edit Time", "Browser", "Finish App")
-    val listOfSet_kor = mutableListOf("날짜 수정", "시간 수정", "브라우저", "앱 종료")
-    val listOfSet_chi = mutableListOf("日期修正","时间修正","浏览器","结束") // NEED MODIFICATION
-    val listOfSet_fra = mutableListOf("Modification la date", "Modification du temps","logiciel de navigation","Fin") // NEED MODIFICATION
-    val listOfSet_esp = mutableListOf("modificación de fecha", "modificación de tiempo","Navegador","conclusión") // NEED MODIFICATION
+    val listOfSet_eng = mutableListOf("Edit Date", "Edit Time", "Browser", "Tic Tac Toe", "Finish App")
+    val listOfSet_kor = mutableListOf("날짜 수정", "시간 수정", "브라우저", "틱택토", "앱 종료")
+    val listOfSet_chi = mutableListOf("日期修正","时间修正","浏览器", "井字游戏", "结束") // NEED MODIFICATION
+    val listOfSet_fra = mutableListOf("Modification la Date", "Modification du Temps","logiciel de navigation","Jeu de Morpion", "Fin") // NEED MODIFICATION
+    val listOfSet_esp = mutableListOf("Modificación de Fecha", "Modificación de Tiempo","Navegador","Tres en Línea", "Conclusión") // NEED MODIFICATION
 
     lateinit var sharedPreferences: SharedPreferences
     val themeKey = "currentTheme";val langKey = "currentLang"
@@ -70,7 +71,11 @@ class SettingsActivity : AppCompatActivity() {
                 0 -> showDatePicker()
                 1 -> showTimePicker()
                 2 -> showWeb()
-                3 -> showAlert()
+                3 -> {
+                    val intent = Intent(this, GameMainActivity::class.java)
+                    startActivity(intent)
+                }
+                4 -> showAlert()
             }
 
             /*when (item.toString()) {

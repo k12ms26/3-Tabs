@@ -71,6 +71,12 @@
     <string name="theme_Esp_8">Galería</string>
     <string name="theme_Esp_9">Ajustes</string>
 
+    <string name="game_eng">Tic Tac Toe</string>
+    <string name="game_kor">틱택토</string>
+    <string name="game_chi">井字游戏</string>
+    <string name="game_fra">Jeu de Morpion</string>
+    <string name="game_esp">Tres en Línea</string>
+
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
