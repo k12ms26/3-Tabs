@@ -3,6 +3,7 @@ package com.example.cs496_tabbed.fragments
 import android.app.AlertDialog
 import android.content.Context
 import android.content.Intent
+import android.content.SharedPreferences
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
@@ -23,13 +24,21 @@ class FreeFragment : ListFragment() {
     val listOfSet_fra = mutableListOf("Langue", "Couleur du thème","Autres fonctions") // NEED MODIFICATION
     val listOfSet_esp = mutableListOf("Wikiproyecto:Lenguas del mundo", "color temático","distintas funciones diferencia función") // NEED MODIFICATION
 
+    lateinit var sharedPreferences: SharedPreferences
+    val themeKey = "currentTheme"; val langKey = "currentLang"
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+        sharedPreferences = this.activity!!.getSharedPreferences(
+            "ThemePref",
+            Context.MODE_PRIVATE
+        )
+
         // Inflate the layout for this fragment
         val view = inflater.inflate(R.layout.fragment_free, container, false)
-        when(MainActivity.Lang){
+        when(sharedPreferences.getString(langKey, "eng")){
             "eng" -> listOfSet = listOfSet_eng
             "kor" -> listOfSet = listOfSet_kor
             "chi" -> listOfSet = listOfSet_chi
