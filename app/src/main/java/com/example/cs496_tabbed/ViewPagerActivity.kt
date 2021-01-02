@@ -1,5 +1,6 @@
 package com.example.cs496_tabbed
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
@@ -20,6 +21,20 @@ class ViewPagerActivity : AppCompatActivity() {
     var mViewPagerAdapter: ViewPageAdapter? = null
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
+        when (MainActivity.Selected_Color) {
+            "Color0" -> theme.applyStyle(R.style.Color0, true)
+            "Color1" -> theme.applyStyle(R.style.Color1, true)
+            "Color2" -> theme.applyStyle(R.style.Color2, true)
+            "Color3" -> theme.applyStyle(R.style.Color3, true)
+            "Color4" -> theme.applyStyle(R.style.Color4, true)
+            "Color5" -> theme.applyStyle(R.style.Color5, true)
+            "Color6" -> theme.applyStyle(R.style.Color6, true)
+            "Color7" -> theme.applyStyle(R.style.Color7, true)
+            "Color8" -> theme.applyStyle(R.style.Color8, true)
+        }
+
+
         setContentView(R.layout.viewpager)
 
         // Initializing the ViewPager Object
@@ -31,4 +46,14 @@ class ViewPagerActivity : AppCompatActivity() {
         // Adding the Adapter to the ViewPager
         mViewPager!!.adapter = mViewPagerAdapter
     }
+
+    override fun onRestart() {
+        super.onRestart()
+        val intent = intent // from getIntent()
+        intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION)
+        finish()
+        startActivity(intent)
+    }
+
+
 }
