@@ -1,6 +1,8 @@
 package com.example.cs496_tabbed
 
+import android.content.Context
 import android.content.Intent
+import android.content.SharedPreferences
 import android.os.Bundle
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
@@ -19,10 +21,19 @@ class ViewPagerActivity : AppCompatActivity() {
 
     // Creating Object of ViewPagerAdapter
     var mViewPagerAdapter: ViewPageAdapter? = null
+
+    lateinit var sharedPreferences: SharedPreferences
+    val themeKey = "currentTheme";val langKey = "currentLang"
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        when (MainActivity.Selected_Color) {
+        sharedPreferences = getSharedPreferences(
+            "ThemePref",
+            Context.MODE_PRIVATE
+        )
+
+        when (sharedPreferences.getString(themeKey, "Color0")) {
             "Color0" -> theme.applyStyle(R.style.Color0, true)
             "Color1" -> theme.applyStyle(R.style.Color1, true)
             "Color2" -> theme.applyStyle(R.style.Color2, true)

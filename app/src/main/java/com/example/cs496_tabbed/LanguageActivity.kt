@@ -1,6 +1,8 @@
 package com.example.cs496_tabbed
 
+import android.content.Context
 import android.content.Intent
+import android.content.SharedPreferences
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
@@ -10,10 +12,18 @@ import android.widget.TextView
 import com.example.cs496_tabbed.MainActivity.Companion.Lang
 
 open class LanguageActivity : AppCompatActivity() {
+    lateinit var sharedPreferences: SharedPreferences
+    val themeKey = "currentTheme";val langKey = "currentLang"
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        when (MainActivity.Selected_Color) {
+        sharedPreferences = getSharedPreferences(
+            "ThemePref",
+            Context.MODE_PRIVATE
+        )
+
+        when (sharedPreferences.getString(themeKey, "Color0")) {
             "Color0" ->  theme.applyStyle(R.style.Color0, true)
             "Color1" ->  theme.applyStyle(R.style.Color1, true)
             "Color2" ->  theme.applyStyle(R.style.Color2, true)
@@ -38,30 +48,29 @@ open class LanguageActivity : AppCompatActivity() {
             when(listOfLanguage[position]){
                 "English" -> {Lang = "eng"
                     textView.text = "Language: English"
+                    sharedPreferences.edit().putString(langKey, "eng").apply()
                 }
                 "한국어" -> {Lang = "kor"
                     textView.text = "언어: 한국어"
+                    sharedPreferences.edit().putString(langKey, "kor").apply()
                 }
                 "中文" -> {Lang = "chi"
                     textView.text = "语言: 中文"
+                    sharedPreferences.edit().putString(langKey, "chi").apply()
                 }
                 "Français" -> {Lang = "fra"
                     textView.text = "La langue: Français"
+                    sharedPreferences.edit().putString(langKey, "fra").apply()
                 }
                 "Español" -> {Lang = "esp"
                     textView.text = "Lengua: Español"
+                    sharedPreferences.edit().putString(langKey, "esp").apply()
                 }
             }
+            MainActivity.Main_Lang_Change = true
         }
 
     }
 
-    override fun onRestart() {
-        super.onRestart()
-        val intent = intent // from getIntent()
-        intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION)
-        finish()
-        startActivity(intent)
-    }
 
 }

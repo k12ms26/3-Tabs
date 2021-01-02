@@ -2,8 +2,10 @@ package com.example.cs496_tabbed
 
 import android.app.DatePickerDialog
 import android.app.TimePickerDialog
+import android.content.Context
 import android.content.DialogInterface
 import android.content.Intent
+import android.content.SharedPreferences
 import android.net.Uri
 import android.os.Bundle
 import android.widget.ArrayAdapter
@@ -23,9 +25,18 @@ class SettingsActivity : AppCompatActivity() {
     val listOfSet_fra = mutableListOf("Modification la date", "Modification du temps","logiciel de navigation","Fin") // NEED MODIFICATION
     val listOfSet_esp = mutableListOf("modificación de fecha", "modificación de tiempo","Navegador","conclusión") // NEED MODIFICATION
 
+    lateinit var sharedPreferences: SharedPreferences
+    val themeKey = "currentTheme";val langKey = "currentLang"
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        when (MainActivity.Selected_Color) {
+
+        sharedPreferences = getSharedPreferences(
+            "ThemePref",
+            Context.MODE_PRIVATE
+        )
+
+        when (sharedPreferences.getString(themeKey, "Color0")) {
             "Color0" ->  theme.applyStyle(R.style.Color0, true)
             "Color1" ->  theme.applyStyle(R.style.Color1, true)
             "Color2" ->  theme.applyStyle(R.style.Color2, true)
@@ -37,7 +48,7 @@ class SettingsActivity : AppCompatActivity() {
             "Color8" ->  theme.applyStyle(R.style.Color8, true)
         }
 
-        when(MainActivity.Lang){
+        when(sharedPreferences.getString(langKey, "eng")){
             "eng" -> listOfSet = listOfSet_eng
             "kor" -> listOfSet = listOfSet_kor
             "chi" -> listOfSet = listOfSet_chi
@@ -127,14 +138,14 @@ class SettingsActivity : AppCompatActivity() {
         val cal = Calendar.getInstance()
         DatePickerDialog(this, DatePickerDialog.OnDateSetListener { datePicker, y, m, d->
             Toast.makeText(this, "$y-$m-$d", Toast.LENGTH_SHORT).show()
-                                                                  }, cal.get(Calendar.YEAR), cal.get(Calendar.MONTH), cal.get(Calendar.DATE)).show()
+        }, cal.get(Calendar.YEAR), cal.get(Calendar.MONTH), cal.get(Calendar.DATE)).show()
     }
 
     private fun showTimePicker() {
         val cal = Calendar.getInstance()
         TimePickerDialog(this, TimePickerDialog.OnTimeSetListener { timePicker, h, m ->
             Toast.makeText(this, "$h:$m", Toast.LENGTH_SHORT).show()
-                                                                  }, cal.get(Calendar.HOUR), cal.get(Calendar.MINUTE), true).show()
+        }, cal.get(Calendar.HOUR), cal.get(Calendar.MINUTE), true).show()
     }
 
     private fun showWeb() {

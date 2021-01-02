@@ -19,7 +19,7 @@ import com.example.cs496_tabbed.MainActivity.Companion.Selected_Color
 
 open class ThemeActivity : AppCompatActivity() {
     lateinit var sharedPreferences: SharedPreferences
-    val themeKey = "currentTheme"
+    val themeKey = "currentTheme";val langKey = "currentLang"
 
     val listOfTheme_eng = arrayOf("Blue","Red","Grey","Yellow","Orange","Green","Navy Blue","Purple","Pink")
 
@@ -56,7 +56,7 @@ open class ThemeActivity : AppCompatActivity() {
 
 
         var listOfTheme = arrayOf<String>()
-        when(Lang){
+        when(sharedPreferences.getString(langKey, "eng")){
             "eng" -> listOfTheme = listOfTheme_eng
             "kor" -> listOfTheme = listOfTheme_kor
             "chi" -> listOfTheme = listOfTheme_chi
@@ -84,7 +84,7 @@ open class ThemeActivity : AppCompatActivity() {
                 7 -> sharedPreferences.edit().putString(themeKey, "Color7").apply()
                 8 -> sharedPreferences.edit().putString(themeKey, "Color8").apply()
             }
-
+            MainActivity.Main_Color_Change = true
             val intent = intent // from getIntent()
             intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION)
             finish()

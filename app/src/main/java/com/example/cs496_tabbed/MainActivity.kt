@@ -23,12 +23,21 @@ open class MainActivity : AppCompatActivity() {
     companion object {
         var Lang = "eng"
         var Selected_Color = "Color0"
+        var Main_Color_Change = false ; var Main_Lang_Change = false
     }
+    lateinit var sharedPreferences: SharedPreferences
+    val themeKey = "currentTheme"; val langKey = "currentLang"
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        when (Selected_Color) {
+        sharedPreferences = getSharedPreferences(
+            "ThemePref",
+            Context.MODE_PRIVATE
+        )
+
+        when (sharedPreferences.getString(themeKey, "Color0")) {
             "Color0" -> theme.applyStyle(R.style.Color0, true)
             "Color1" -> theme.applyStyle(R.style.Color1, true)
             "Color2" -> theme.applyStyle(R.style.Color2, true)
@@ -97,7 +106,7 @@ open class MainActivity : AppCompatActivity() {
 
         val adapter = ViewPagerAdapter(supportFragmentManager)
 
-        when (Lang) {
+        when (sharedPreferences.getString(langKey, "eng")) {
             "kor" -> {
                 adapter.addFragment(
                     ContactsFragment(),
@@ -180,10 +189,16 @@ open class MainActivity : AppCompatActivity() {
 
     // refer to https://developer.android.com/guide/components/activities/activity-lifecycle
     override fun onRestart() {
-        super.onRestart()
-        val intent = intent // from getIntent()
-        intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION)
-        finish()
-        startActivity(intent)
+        if (Main_Color_Change or Main_Lang_Change){
+            Main_Color_Change = false; Main_Lang_Change = false
+            super.onRestart()
+            val intent = intent // from getIntent()
+            intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION)
+            finish()
+            startActivity(intent)
+        }else{
+            super.onRestart()
+        }
+
     }
 }
