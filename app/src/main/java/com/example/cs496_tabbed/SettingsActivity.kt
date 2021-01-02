@@ -84,7 +84,7 @@ class SettingsActivity : AppCompatActivity() {
     private fun showAlert() {
         if(listOfSet == listOfSet_eng){
             AlertDialog.Builder(this)
-                .setTitle("Do you want to Finish App?")
+                .setTitle("Do you want to Finish the App?")
                 .setPositiveButton("Finish") { dialogInterface: DialogInterface, i: Int ->
                     ActivityCompat.finishAffinity(this)
                     System.exit(0)
