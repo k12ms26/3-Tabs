@@ -16,13 +16,13 @@ import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import kotlin.math.log
 
 class FreeFragment : ListFragment() {
-    val settings = arrayOf("Language", "Set Theme Color", "Another Options")
+    val settings = arrayOf("Language", "Set Theme Color", "Another Options", "Block Spam")
     var listOfSet = mutableListOf<String>()
-    val listOfSet_eng = mutableListOf("Language", "Set Theme Color", "Another Options")
-    val listOfSet_kor = mutableListOf("언어", "테마 색", "다른 기능")
-    val listOfSet_chi = mutableListOf("语言","主题色","异能") // NEED MODIFICATION
-    val listOfSet_fra = mutableListOf("Langue", "Couleur du thème","Autres fonctions") // NEED MODIFICATION
-    val listOfSet_esp = mutableListOf("Wikiproyecto:Lenguas del mundo", "color temático","distintas funciones diferencia función") // NEED MODIFICATION
+    val listOfSet_eng = mutableListOf("Language", "Set Theme Color", "Another Options", "Block Spam")
+    val listOfSet_kor = mutableListOf("언어", "테마 색", "다른 기능", "스팸 차단")
+    val listOfSet_chi = mutableListOf("语言","主题色","异能", "阻止垃圾邮件") // NEED MODIFICATION
+    val listOfSet_fra = mutableListOf("Langue", "Couleur du Thème","Autres Fonctions", "Bloquer le Spam") // NEED MODIFICATION
+    val listOfSet_esp = mutableListOf("Wikiproyecto:Lenguas del Mundo", "Color Temático","Distintas Funciones Diferencia Función", "Bloquear Spam") // NEED MODIFICATION
 
     lateinit var sharedPreferences: SharedPreferences
     val themeKey = "currentTheme"; val langKey = "currentLang"
@@ -65,6 +65,10 @@ class FreeFragment : ListFragment() {
         }
         if(position == 2){
             val intent = Intent(requireContext(), SettingsActivity::class.java)
+            startActivity(intent)
+        }
+        if(position == 3){
+            val intent = Intent(requireContext(), SpamActivity::class.java)
             startActivity(intent)
         }
 
