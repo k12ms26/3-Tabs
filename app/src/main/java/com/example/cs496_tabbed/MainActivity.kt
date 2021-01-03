@@ -26,6 +26,7 @@ open class MainActivity : AppCompatActivity() {
         var Selected_Color = "Color0"
         var Main_Color_Change = false ; var Main_Lang_Change = false // Settings Related
         lateinit var Current_Music: MediaPlayer; var Current_Music_Number = 0; var Music_to_Play = 0;
+        var mp_Array = arrayOfNulls<MediaPlayer>(5)
     }
     lateinit var sharedPreferences: SharedPreferences
     val themeKey = "currentTheme"; val langKey = "currentLang"
