@@ -6,8 +6,6 @@ import android.content.SharedPreferences
 import android.content.pm.PackageManager
 import android.media.MediaPlayer
 import android.os.Bundle
-import android.util.Log
-import android.view.View
 import android.widget.Toast
 import com.google.android.material.tabs.TabLayout
 import androidx.viewpager.widget.ViewPager
@@ -18,7 +16,6 @@ import com.example.cs496_tabbed.fragments.ContactsFragment
 import com.example.cs496_tabbed.fragments.FreeFragment
 import com.example.cs496_tabbed.fragments.GalleryFragment
 import com.example.cs496_tabbed.fragments.adapters.ViewPagerAdapter
-
 
 open class MainActivity : AppCompatActivity() {
     companion object {

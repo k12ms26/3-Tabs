@@ -4,26 +4,15 @@ import android.content.Context
 import android.content.Intent
 import android.content.SharedPreferences
 import android.os.Bundle
-import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.viewpager.widget.ViewPager
+import java.util.ArrayList
 
 
 class ViewPagerActivity : AppCompatActivity() {
-    // creating object of ViewPager
-    var mViewPager: ViewPager? = null
-
-    // images array
-    var images = intArrayOf(
-        R.drawable.beach, R.drawable.butterfly, R.drawable.car, R.drawable.coffee,
-        R.drawable.desserts, R.drawable.fox, R.drawable.girl, R.drawable.kitten
-    )
-
-    // Creating Object of ViewPagerAdapter
-    var mViewPagerAdapter: ViewPageAdapter? = null
-
+    //var mPager: ViewPager? = null
     lateinit var sharedPreferences: SharedPreferences
-    val themeKey = "currentTheme";val langKey = "currentLang"
+    val themeKey = "currentTheme"
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -44,20 +33,14 @@ class ViewPagerActivity : AppCompatActivity() {
             "Color7" -> theme.applyStyle(R.style.Color7, true)
             "Color8" -> theme.applyStyle(R.style.Color8, true)
         }
-
-
         setContentView(R.layout.viewpager)
-
-        // Initializing the ViewPager Object
-        mViewPager = findViewById<View>(R.id.viewPagerMain) as ViewPager
-
-        // Initializing the ViewPagerAdapter
-        mViewPagerAdapter = ViewPageAdapter(this@ViewPagerActivity, images)
-
-        // Adding the Adapter to the ViewPager
-        mViewPager!!.adapter = mViewPagerAdapter
+        val mPager = findViewById<ViewPager>(R.id.viewPagerMain)
+        val images: ArrayList<Int>? = intent.extras?.getIntegerArrayList("images")
+        val currentImage = intent.extras?.getInt("current")
+        val adapter = ViewPageAdapter(supportFragmentManager, images!!)
+        mPager.setAdapter(adapter)
+        mPager.setCurrentItem(currentImage!!)
     }
-
     override fun onRestart() {
         super.onRestart()
         val intent = intent // from getIntent()
@@ -65,6 +48,4 @@ class ViewPagerActivity : AppCompatActivity() {
         finish()
         startActivity(intent)
     }
-
-
 }
