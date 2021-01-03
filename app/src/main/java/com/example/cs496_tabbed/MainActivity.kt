@@ -4,6 +4,7 @@ import android.content.Context
 import android.content.Intent
 import android.content.SharedPreferences
 import android.content.pm.PackageManager
+import android.media.MediaPlayer
 import android.os.Bundle
 import android.util.Log
 import android.view.View
@@ -23,7 +24,8 @@ open class MainActivity : AppCompatActivity() {
     companion object {
         var Lang = "eng"
         var Selected_Color = "Color0"
-        var Main_Color_Change = false ; var Main_Lang_Change = false
+        var Main_Color_Change = false ; var Main_Lang_Change = false // Settings Related
+        lateinit var Current_Music: MediaPlayer; var Current_Music_Initialized = false; var Music_Playing = false;
     }
     lateinit var sharedPreferences: SharedPreferences
     val themeKey = "currentTheme"; val langKey = "currentLang"

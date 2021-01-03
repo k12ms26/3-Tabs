@@ -5,9 +5,12 @@ import android.media.MediaPlayer
 import android.os.Bundle
 import android.os.Handler
 import android.os.Message
+import android.util.Log
 import android.view.View
 import android.widget.SeekBar
 import androidx.appcompat.app.AppCompatActivity
+import com.example.cs496_tabbed.MainActivity.Companion.Current_Music
+import com.example.cs496_tabbed.MainActivity.Companion.Current_Music_Initialized
 import com.example.cs496_tabbed.R
 import kotlinx.android.synthetic.main.activity_music.*
 
@@ -20,8 +23,22 @@ class MusicActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_music)
+        if(Current_Music_Initialized){
+            mp = Current_Music
+        }else{
+            mp = MediaPlayer.create(this, R.raw.music1)
+            Current_Music = mp
+            Current_Music_Initialized = true
+        }
 
-        mp = MediaPlayer.create(this, R.raw.music1)
+        //Sets play/pause button when returning to the activity accordingly
+        if (mp.isPlaying){
+            playBtn.setBackgroundResource(R.drawable.stop)
+        }else{
+            playBtn.setBackgroundResource(R.drawable.play)
+        }
+
+
         mp.isLooping = true
         mp.setVolume(0.5f, 0.5f)
         totalTime = mp.duration
@@ -107,12 +124,13 @@ class MusicActivity : AppCompatActivity() {
             // Stop
             mp.pause()
             playBtn.setBackgroundResource(R.drawable.play)
-
+            Log.d("CLICK",mp.toString())
         } else {
             // Start
             mp.start()
             playBtn.setBackgroundResource(R.drawable.stop)
         }
     }
+
 
 }
