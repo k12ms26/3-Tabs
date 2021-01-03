@@ -8,6 +8,7 @@ import android.os.Message
 import android.util.Log
 import android.view.View
 import android.widget.SeekBar
+import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import com.example.cs496_tabbed.MainActivity.Companion.Current_Music
 import com.example.cs496_tabbed.MainActivity.Companion.Current_Music_Number
@@ -15,13 +16,14 @@ import com.example.cs496_tabbed.MainActivity.Companion.Music_to_Play
 import com.example.cs496_tabbed.MainActivity.Companion.mp_Array
 import com.example.cs496_tabbed.R
 import kotlinx.android.synthetic.main.activity_music.*
+import org.w3c.dom.Text
 
 
 class MusicActivity : AppCompatActivity() {
 
     private lateinit var mp: MediaPlayer
     private var totalTime: Int = 0
-
+    val MusicNameList = arrayListOf<String>("Clarion - Scott Buckley", "Jeris - Get Lost", "Skydancer - Scandinavianz", "Echoes - LiQWYD", "Lie 2 You (ft. Dylan Emmet) - Leonell Cassio")
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -62,14 +64,9 @@ class MusicActivity : AppCompatActivity() {
         }
 
         setContentView(R.layout.activity_music)
-        /*
-        if(Current_Music_Initialized){
-            mp = Current_Music
-        }else{
-            mp = MediaPlayer.create(this, R.raw.music1)
-            Current_Music = mp
-            Current_Music_Initialized = true
-        }*/
+
+        val musicTitle = findViewById<TextView>(R.id.textViewTitle)
+        musicTitle.text = MusicNameList[Music_to_Play - 1]
 
         //Sets play/pause button when returning to the activity accordingly
         if (mp.isPlaying){
@@ -116,7 +113,6 @@ class MusicActivity : AppCompatActivity() {
         )
 
         // Thread
-
         Thread(Runnable {
             while (mp != null) {
                 try {
