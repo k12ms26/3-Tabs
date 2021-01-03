@@ -20,17 +20,25 @@ class GalleryFragment : Fragment() {
     var images = ArrayList(
         Arrays.asList(
             R.drawable.beach,
+            R.drawable.bicycle,
             R.drawable.butterfly,
             R.drawable.car,
+            R.drawable.champagne,
             R.drawable.coffee,
             R.drawable.desserts,
+            R.drawable.dome,
             R.drawable.fox,
+            R.drawable.giraffe,
             R.drawable.girl,
+            R.drawable.iceland,
             R.drawable.kitten,
             R.drawable.paris,
             R.drawable.pizza,
             R.drawable.salmon,
-            R.drawable.sunset
+            R.drawable.seagull,
+            R.drawable.sunset,
+            R.drawable.tree,
+            R.drawable.university
         )
     )
     override fun onCreateView(
