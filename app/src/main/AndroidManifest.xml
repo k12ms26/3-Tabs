@@ -14,7 +14,8 @@
         android:theme="@style/Color0">
         <activity android:name=".game.GameActivity"></activity>
         <activity android:name=".game.GameMainActivity" />
-        <activity android:name=".SpamActivity" />
+        <activity android:name=".musicplayer.MusicMainActivity" />
+        <activity android:name=".musicplayer.MusicActivity"/>
         <activity android:name=".ThemeActivity" />
         <activity android:name=".LanguageActivity" />
         <activity android:name=".ViewPagerActivity" />

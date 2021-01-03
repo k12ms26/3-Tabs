@@ -22,6 +22,7 @@ class MusicActivity : AppCompatActivity() {
     private lateinit var mp: MediaPlayer
     private var totalTime: Int = 0
 
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         //setContentView(R.layout.activity_music)
@@ -31,7 +32,6 @@ class MusicActivity : AppCompatActivity() {
             if(Current_Music_Number != 0){
                 Current_Music.stop()
                 //Current_Music.release()
-                Log.d("CM?",Current_Music.toString())
                 if(mp_Array[Music_to_Play-1] == null){//When the selected music has never been played
                     when(Music_to_Play){
                         1 -> mp = MediaPlayer.create(this, R.raw.music1)
@@ -85,37 +85,38 @@ class MusicActivity : AppCompatActivity() {
 
         // Volume Bar
         volumeBar.setOnSeekBarChangeListener(
-                object : SeekBar.OnSeekBarChangeListener {
-                    override fun onProgressChanged(seekbar: SeekBar?, progress: Int, fromUser: Boolean) {
-                        if (fromUser) {
-                            var volumeNum = progress / 100.0f
-                            mp.setVolume(volumeNum, volumeNum)
-                        }
-                    }
-                    override fun onStartTrackingTouch(p0: SeekBar?) {
-                    }
-                    override fun onStopTrackingTouch(p0: SeekBar?) {
+            object : SeekBar.OnSeekBarChangeListener {
+                override fun onProgressChanged(seekbar: SeekBar?, progress: Int, fromUser: Boolean) {
+                    if (fromUser) {
+                        var volumeNum = progress / 100.0f
+                        mp.setVolume(volumeNum, volumeNum)
                     }
                 }
+                override fun onStartTrackingTouch(p0: SeekBar?) {
+                }
+                override fun onStopTrackingTouch(p0: SeekBar?) {
+                }
+            }
         )
 
         // Position Bar
         positionBar.max = totalTime
         positionBar.setOnSeekBarChangeListener(
-                object : SeekBar.OnSeekBarChangeListener {
-                    override fun onProgressChanged(seekBar: SeekBar?, progress: Int, fromUser: Boolean) {
-                        if (fromUser) {
-                            mp.seekTo(progress)
-                        }
-                    }
-                    override fun onStartTrackingTouch(p0: SeekBar?) {
-                    }
-                    override fun onStopTrackingTouch(p0: SeekBar?) {
+            object : SeekBar.OnSeekBarChangeListener {
+                override fun onProgressChanged(seekBar: SeekBar?, progress: Int, fromUser: Boolean) {
+                    if (fromUser) {
+                        mp.seekTo(progress)
                     }
                 }
+                override fun onStartTrackingTouch(p0: SeekBar?) {
+                }
+                override fun onStopTrackingTouch(p0: SeekBar?) {
+                }
+            }
         )
 
         // Thread
+
         Thread(Runnable {
             while (mp != null) {
                 try {
@@ -127,6 +128,7 @@ class MusicActivity : AppCompatActivity() {
                 }
             }
         }).start()
+
     }
 
     @SuppressLint("HandlerLeak")
