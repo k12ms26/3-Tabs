@@ -10,7 +10,8 @@ import android.view.View
 import android.widget.SeekBar
 import androidx.appcompat.app.AppCompatActivity
 import com.example.cs496_tabbed.MainActivity.Companion.Current_Music
-import com.example.cs496_tabbed.MainActivity.Companion.Current_Music_Initialized
+import com.example.cs496_tabbed.MainActivity.Companion.Current_Music_Number
+import com.example.cs496_tabbed.MainActivity.Companion.Music_to_Play
 import com.example.cs496_tabbed.R
 import kotlinx.android.synthetic.main.activity_music.*
 
@@ -22,14 +23,34 @@ class MusicActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        //setContentView(R.layout.activity_music)
+        if(Music_to_Play == Current_Music_Number){
+            mp = Current_Music
+        }else{
+            if(Current_Music_Number != 0){
+                Current_Music.stop()
+                Current_Music.release()
+            }
+            when(Music_to_Play){
+                1 -> {mp = MediaPlayer.create(this, R.raw.music1)}
+                2 -> {mp = MediaPlayer.create(this, R.raw.music2)}
+                3 -> {mp = MediaPlayer.create(this, R.raw.music3)}
+                4 -> {mp = MediaPlayer.create(this, R.raw.music4)}
+                5 -> {mp = MediaPlayer.create(this, R.raw.music5)}
+            }
+            Current_Music = mp
+            Current_Music_Number = Music_to_Play
+        }
+
         setContentView(R.layout.activity_music)
+        /*
         if(Current_Music_Initialized){
             mp = Current_Music
         }else{
             mp = MediaPlayer.create(this, R.raw.music1)
             Current_Music = mp
             Current_Music_Initialized = true
-        }
+        }*/
 
         //Sets play/pause button when returning to the activity accordingly
         if (mp.isPlaying){

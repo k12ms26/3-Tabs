@@ -11,9 +11,10 @@ import android.widget.*
 import androidx.fragment.app.ListFragment
 import com.example.cs496_tabbed.*
 import com.example.cs496_tabbed.musicplayer.MusicActivity
+import com.example.cs496_tabbed.musicplayer.MusicMainActivity
 
 class FreeFragment : ListFragment() {
-    val settings = arrayOf("Language", "Set Theme Color", "Another Options", "Block Spam")
+    val settings = arrayOf("Language", "Set Theme Color", "Another Options", "Music")
     var listOfSet = mutableListOf<String>()
     val listOfSet_eng = mutableListOf("Language", "Set Theme Color", "Another Options", "Music")
     val listOfSet_kor = mutableListOf("언어", "테마 색", "다른 기능", "음악")
@@ -65,7 +66,7 @@ class FreeFragment : ListFragment() {
             startActivity(intent)
         }
         if(position == 3){
-            val intent = Intent(requireContext(), MusicActivity::class.java)
+            val intent = Intent(requireContext(), MusicMainActivity::class.java)
             startActivity(intent)
         }
 
