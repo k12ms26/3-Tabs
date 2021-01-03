@@ -1,28 +1,25 @@
 package com.example.cs496_tabbed.fragments
 
-import android.app.AlertDialog
 import android.content.Context
 import android.content.Intent
 import android.content.SharedPreferences
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.*
 import androidx.fragment.app.ListFragment
 import com.example.cs496_tabbed.*
-import com.google.android.material.dialog.MaterialAlertDialogBuilder
-import kotlin.math.log
+import com.example.cs496_tabbed.musicplayer.MusicActivity
 
 class FreeFragment : ListFragment() {
     val settings = arrayOf("Language", "Set Theme Color", "Another Options", "Block Spam")
     var listOfSet = mutableListOf<String>()
-    val listOfSet_eng = mutableListOf("Language", "Set Theme Color", "Another Options", "Block Spam")
-    val listOfSet_kor = mutableListOf("언어", "테마 색", "다른 기능", "스팸 차단")
-    val listOfSet_chi = mutableListOf("语言","主题色","异能", "阻止垃圾邮件") // NEED MODIFICATION
-    val listOfSet_fra = mutableListOf("Langue", "Couleur du Thème","Autres Fonctions", "Bloquer le Spam") // NEED MODIFICATION
-    val listOfSet_esp = mutableListOf("Wikiproyecto:Lenguas del Mundo", "Color Temático","Distintas Funciones Diferencia Función", "Bloquear Spam") // NEED MODIFICATION
+    val listOfSet_eng = mutableListOf("Language", "Set Theme Color", "Another Options", "Music")
+    val listOfSet_kor = mutableListOf("언어", "테마 색", "다른 기능", "음악")
+    val listOfSet_chi = mutableListOf("语言","主题色","异能", "音乐") // NEED MODIFICATION
+    val listOfSet_fra = mutableListOf("Langue", "Couleur du Thème","Autres Fonctions", "Musique") // NEED MODIFICATION
+    val listOfSet_esp = mutableListOf("Wikiproyecto:Lenguas del Mundo", "Color Temático","Distintas Funciones Diferencia Función", "Música") // NEED MODIFICATION
 
     lateinit var sharedPreferences: SharedPreferences
     val themeKey = "currentTheme"; val langKey = "currentLang"
@@ -68,7 +65,7 @@ class FreeFragment : ListFragment() {
             startActivity(intent)
         }
         if(position == 3){
-            val intent = Intent(requireContext(), SpamActivity::class.java)
+            val intent = Intent(requireContext(), MusicActivity::class.java)
             startActivity(intent)
         }
 
