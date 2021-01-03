@@ -26,12 +26,15 @@ class SettingsActivity : AppCompatActivity() {
     val listOfSet_fra = mutableListOf("Modification la Date", "Modification du Temps","logiciel de navigation","Jeu de Morpion", "Fin") // NEED MODIFICATION
     val listOfSet_esp = mutableListOf("Modificación de Fecha", "Modificación de Tiempo","Navegador","Tres en Línea", "Conclusión") // NEED MODIFICATION
 
+    //COLOR SETTING TOP//
     lateinit var sharedPreferences: SharedPreferences
     val themeKey = "currentTheme";val langKey = "currentLang"
+    //COLOR SETTING BOTTOM//
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
+        //COLOR SETTING TOP//
         sharedPreferences = getSharedPreferences(
             "ThemePref",
             Context.MODE_PRIVATE
@@ -48,6 +51,7 @@ class SettingsActivity : AppCompatActivity() {
             "Color7" ->  theme.applyStyle(R.style.Color7, true)
             "Color8" ->  theme.applyStyle(R.style.Color8, true)
         }
+    //COLOR SETTING BOTTOM//
 
         when(sharedPreferences.getString(langKey, "eng")){
             "eng" -> listOfSet = listOfSet_eng
