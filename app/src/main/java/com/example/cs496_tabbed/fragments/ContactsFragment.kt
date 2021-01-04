@@ -11,10 +11,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ListView
-import android.widget.SearchView
-import android.widget.SimpleCursorAdapter
-import android.widget.Toast
+import android.widget.*
 import androidx.fragment.app.ListFragment
 import com.example.cs496_tabbed.R
 
@@ -33,26 +30,48 @@ class ContactsFragment : ListFragment() {
 
         val from = arrayOf(ContactsContract.CommonDataKinds.Phone.DISPLAY_NAME, ContactsContract.CommonDataKinds.Phone.NUMBER, ContactsContract.CommonDataKinds.Phone._ID)
         val to = intArrayOf(android.R.id.text1, android.R.id.text2)
-        val simple: SimpleCursorAdapter = SimpleCursorAdapter(activity, android.R.layout.simple_list_item_2, cursor, from, to)
+        //val simple: SimpleCursorAdapter = SimpleCursorAdapter(activity, android.R.layout.simple_list_item_2, cursor, from, to)
 
-
-        listAdapter = simple
 
         // Bring in Contacts info to build an array of names in contacts
         var i = 0
-        val NameFromContacts = arrayOfNulls<String>(cursor!!.count); val NumberFromContacts = arrayOfNulls<String>(cursor.count)
+        val ContactsList = arrayOfNulls<String>(cursor!!.count); // val NameFromContacts = arrayOfNulls<String>(cursor.count); val NumberFromContacts = arrayOfNulls<String>(cursor.count);
         val nameFieldColumnIndex = cursor.getColumnIndex(ContactsContract.CommonDataKinds.Phone.DISPLAY_NAME)
         val numberFieldColumnIndex = cursor.getColumnIndex(ContactsContract.CommonDataKinds.Phone.NUMBER)
 
         while(cursor.moveToNext()){
             val contactName = cursor.getString(nameFieldColumnIndex)
             val contactNumber = cursor.getString(numberFieldColumnIndex)
-            NameFromContacts[i] = contactName
-            NumberFromContacts[i] = contactNumber
+            //NameFromContacts[i] = contactName
+            //NumberFromContacts[i]
+            ContactsList[i] = contactName + "\n" + contactNumber
             i++
         }
-        NumberArray = NumberFromContacts    // Assign array of numbers from contacts
-        NameArray = NameFromContacts
+        //NumberArray = NumberFromContacts    // Assign array of numbers from contacts
+        //NameArray = NameFromContacts
+
+        val adapter = ArrayAdapter(requireContext(), android.R.layout.simple_list_item_1, ContactsList)//ContactsList
+        listAdapter = adapter
+
+        //search related from here
+        val search = view.findViewById<SearchView>(R.id.searchView)
+        search.setOnQueryTextListener(object : SearchView.OnQueryTextListener{
+            override fun onQueryTextSubmit(query: String?): Boolean {
+                search.clearFocus()
+                if (ContactsList.contains(query)) {
+                    adapter.filter.filter(query)
+                } else {
+                    Toast.makeText(activity, "Item not found", Toast.LENGTH_LONG).show()
+                }
+                return false
+            }
+            override fun onQueryTextChange(newText: String?): Boolean {
+                adapter.filter.filter(newText)
+                return false
+            }
+        })
+
+
 
         return view
     }

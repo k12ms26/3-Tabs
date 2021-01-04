@@ -50,14 +50,6 @@ class MusicMainActivity : AppCompatActivity() {
         listView.adapter = arrayAdapter
         
         listView.setOnItemClickListener { parent, view, position, id ->
-            /*
-            if(Music_to_Play == 6){
-
-            }else{
-                Music_to_Play = position + 1
-                val intent = Intent(this, MusicActivity::class.java)
-                startActivity(intent)
-            }*/
             Music_to_Play = position + 1
             val intent = Intent(this, MusicActivity::class.java)
             startActivity(intent)
