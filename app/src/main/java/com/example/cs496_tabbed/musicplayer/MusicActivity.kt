@@ -94,6 +94,7 @@ class MusicActivity : AppCompatActivity() {
 
         val musicTitle = findViewById<TextView>(R.id.textViewTitle)
         musicTitle.text = MusicNameList[Music_to_Play - 1]
+        musicTitle.isSelected = true
 
         //Sets play/pause button when returning to the activity accordingly
         if (mp.isPlaying){
