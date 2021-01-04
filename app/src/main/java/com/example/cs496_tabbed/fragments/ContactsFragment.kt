@@ -54,32 +54,6 @@ class ContactsFragment : ListFragment() {
         NumberArray = NumberFromContacts    // Assign array of numbers from contacts
         NameArray = NameFromContacts
 
-/*
-        val listview = view.findViewById<ListView>(android.R.id.list)
-        listview.setOnItemClickListener {
-            parent, views, position, id ->
-            val selectednumber = NumberFromContacts[position]
-            Log.d("NUMBER", selectednumber.toString())
-        }
-        lateinit var searchView: SearchView
-        //search related from here
-        val search = view.findViewById<SearchView>(R.id.searchView)
-        search.setOnQueryTextListener(object : SearchView.OnQueryTextListener{
-            override fun onQueryTextSubmit(query: String?): Boolean {
-                search.clearFocus()
-                if(NameFromContacts.contains(query)){
-                    simple.filter.filter(query)
-                }else{
-                    Toast.makeText(activity, "Item not found", Toast.LENGTH_LONG).show()
-                }
-                return false
-            }
-            override fun onQueryTextChange(newText: String?): Boolean {
-                simple.filter.filter(newText)
-                return false
-            }
-        })
- */
         return view
     }
 

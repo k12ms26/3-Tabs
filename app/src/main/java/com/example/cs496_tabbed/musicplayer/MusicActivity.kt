@@ -4,6 +4,7 @@ import android.annotation.SuppressLint
 import android.content.Context
 import android.content.SharedPreferences
 import android.media.MediaPlayer
+import android.net.Uri
 import android.os.Bundle
 import android.os.Handler
 import android.os.Message
@@ -20,7 +21,17 @@ import com.example.cs496_tabbed.R
 import kotlinx.android.synthetic.main.activity_music.*
 import org.w3c.dom.Text
 
-
+/*
+    When Adding Music refer to
+    In MainActivity.kt
+        mp_Array (increase size accordingly)
+    In MusicActivity.kt
+        MusicNameList (add in the list)
+        Add cases in when(Music_to_Play) in an if & else statement
+    In MusicMainActivity.kt
+        Adjust setOnItemClickListener when specific item in the list works differently
+        Add an element in listOfMusic
+ */
 class MusicActivity : AppCompatActivity() {
 
     private lateinit var mp: MediaPlayer
