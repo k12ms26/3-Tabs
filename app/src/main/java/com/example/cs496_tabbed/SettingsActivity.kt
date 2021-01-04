@@ -159,8 +159,4 @@ class SettingsActivity : AppCompatActivity() {
             Toast.makeText(this, "$h:$m", Toast.LENGTH_SHORT).show()
         }, cal.get(Calendar.HOUR), cal.get(Calendar.MINUTE), true).show()
     }
-
-    private fun showWeb() {
-        startActivity(Intent(Intent.ACTION_VIEW, Uri.parse("https://www.naver.com")))
-    }
 }
