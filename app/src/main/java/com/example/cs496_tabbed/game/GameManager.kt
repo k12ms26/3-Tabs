@@ -23,7 +23,10 @@ class GameManager {
 
         if (winningLine == null) {
             currentPlayer = 3 - currentPlayer
-        } else {
+        }else if(winningLine == WinningLine.TIE){
+
+        }
+        else {
             when (currentPlayer) {
                 1 -> player1Points++
                 2 -> player2Points++
@@ -59,6 +62,8 @@ class GameManager {
             return WinningLine.DIAGONAL_LEFT
         } else if (state[0][2] == currentPlayer && state[1][1] == currentPlayer && state[2][0] == currentPlayer) {
             return WinningLine.DIAGONAL_RIGHT
+        }else if(!state[0].contains(0) && !state[1].contains(0) && !state[2].contains(0)){
+            return WinningLine.TIE
         }
         return null
     }

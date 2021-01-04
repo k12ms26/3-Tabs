@@ -165,6 +165,8 @@ class GameActivity : AppCompatActivity() {
             WinningLine.DIAGONAL_RIGHT -> Pair(listOf(three, five, seven),
                 R.drawable.right_diagonal_line
             )
+            WinningLine.TIE -> Pair(listOf(five), R.drawable.right_diagonal_line)
+
         }
 
         winningBoxes.forEach { box ->
