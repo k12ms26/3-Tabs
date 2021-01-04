@@ -53,15 +53,30 @@ open class ThemeActivity : AppCompatActivity() {
         }
         Selected_Color = sharedPreferences.getString(themeKey, "Color0").toString()
         setContentView(R.layout.activity_theme)
-
+        val ThemetextView = findViewById<TextView>(R.id.ThemetextView)
 
         var listOfTheme = arrayOf<String>()
         when(sharedPreferences.getString(langKey, "eng")){
-            "eng" -> listOfTheme = listOfTheme_eng
-            "kor" -> listOfTheme = listOfTheme_kor
-            "chi" -> listOfTheme = listOfTheme_chi
-            "fra" -> listOfTheme = listOfTheme_fra
-            "esp" -> listOfTheme = listOfTheme_esp
+            "eng" -> {
+                listOfTheme = listOfTheme_eng
+                ThemetextView.text = "Theme"
+            };
+            "kor" -> {
+                listOfTheme = listOfTheme_kor
+                ThemetextView.text = "테마 색"
+            }
+            "chi" -> {
+                listOfTheme = listOfTheme_chi
+                ThemetextView.text = "主题色"
+            }
+            "fra" -> {
+                listOfTheme = listOfTheme_fra
+                ThemetextView.text = "Couleur du Thème"
+            }
+            "esp" -> {
+                listOfTheme = listOfTheme_esp
+                ThemetextView.text = "Color Temático"
+            }
         }
 
 

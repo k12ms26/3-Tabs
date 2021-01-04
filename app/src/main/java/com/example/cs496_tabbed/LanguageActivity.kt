@@ -39,7 +39,23 @@ open class LanguageActivity : AppCompatActivity() {
         val listOfLanguage = arrayOf("English", "한국어", "中文", "Français", "Español")
         val listView = findViewById<ListView>(R.id.languageListView)
         val textView = findViewById<TextView>(R.id.LanguagetextView)
-
+        when(sharedPreferences.getString(langKey, "eng")){
+            "eng" -> {
+                textView.text = "Language"
+            };
+            "kor" -> {
+                textView.text = "언어"
+            }
+            "chi" -> {
+                textView.text = "语言"
+            }
+            "fra" -> {
+                textView.text = "Langue"
+            }
+            "esp" -> {
+                textView.text = "Lenguas del Mundo"
+            }
+        }
         val arrayAdapter:ArrayAdapter<String> = ArrayAdapter(
             this, android.R.layout.simple_list_item_1, listOfLanguage
         )

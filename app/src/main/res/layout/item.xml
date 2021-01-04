@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:gravity="center"
-    tools:context=".ImageFragment">
+    tools:context=".fragments.ImageFragment">
 
     <!-- viewpager 안에 있는 imageview -->
     <ImageView

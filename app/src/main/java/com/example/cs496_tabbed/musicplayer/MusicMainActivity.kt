@@ -7,6 +7,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.ArrayAdapter
 import android.widget.ListView
+import android.widget.TextView
 import com.example.cs496_tabbed.MainActivity.Companion.Music_to_Play
 import com.example.cs496_tabbed.R
 
@@ -43,7 +44,16 @@ class MusicMainActivity : AppCompatActivity() {
 
         val listOfMusic = arrayOf("Clarion - Scott Buckley", "Jeris - Get Lost", "Skydancer - Scandinavianz", "Echoes - LiQWYD", "Lie 2 You - Leonell Cassio")
         val listView = findViewById<ListView>(R.id.listViewMusic)
-        
+        val MusictextView = findViewById<TextView>(R.id.MusictextView)
+
+        when(sharedPreferences.getString(langKey, "eng")){
+            "eng" -> MusictextView.text = "Music"
+            "kor" -> MusictextView.text = "음악"
+            "chi" -> MusictextView.text = "音乐"
+            "fra" -> MusictextView.text = "Musique"
+            "esp" -> MusictextView.text = "Música"
+        }
+
         val arrayAdapter: ArrayAdapter<String> = ArrayAdapter(
             this, android.R.layout.simple_list_item_1, listOfMusic
         )

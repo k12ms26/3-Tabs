@@ -5,25 +5,28 @@ import android.app.Activity
 import android.content.Context
 import android.content.Intent
 import android.content.SharedPreferences
+import android.net.Uri
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.*
+import androidx.core.content.ContextCompat
+import androidx.core.content.ContextCompat.startActivity
 import androidx.fragment.app.ListFragment
 import com.example.cs496_tabbed.*
 import com.example.cs496_tabbed.musicplayer.MusicActivity
 import com.example.cs496_tabbed.musicplayer.MusicMainActivity
 
-val settings = arrayOf("Language", "Set Theme Color", "Another Options", "Music")
+val settings = arrayOf("Language", "Set Theme Color", "Browser", "Music", "Games", "Another Options")
 var listOfSet = mutableListOf<String>()
-val listOfSet_eng = mutableListOf("Language", "Set Theme Color", "Another Options", "Music")
-val listOfSet_kor = mutableListOf("언어", "테마 색", "다른 기능", "음악")
-val listOfSet_chi = mutableListOf("语言","主题色","异能", "音乐") // NEED MODIFICATION
-val listOfSet_fra = mutableListOf("Langue", "Couleur du Thème","Autres Fonctions", "Musique") // NEED MODIFICATION
-val listOfSet_esp = mutableListOf("Lenguas del Mundo", "Color Temático","Distintas Funciones", "Música") // NEED MODIFICATION
+val listOfSet_eng = mutableListOf("Language", "Set Theme Color", "Browser", "Music", "Games", "Another Options")
+val listOfSet_kor = mutableListOf("언어", "테마 색", "브라우저", "음악", "게임", "다른 기능")
+val listOfSet_chi = mutableListOf("语言","主题色","井字游戏","音乐", "游戏", "异能" ) // NEED MODIFICATION
+val listOfSet_fra = mutableListOf("Langue", "Couleur du Thème","logiciel de navigation", "Musique", "Jeu", "Autres Fonctions") // NEED MODIFICATION
+val listOfSet_esp = mutableListOf("Lenguas del Mundo", "Color Temático", "Navegador","Música", "juego", "Distintas Funciones") // NEED MODIFICATION
 
-var image = intArrayOf(R.drawable.ic_baseline_language_24, R.drawable.ic_baseline_color_lens_24, R.drawable.ic_baseline_apps_24, R.drawable.ic_baseline_music_note_24)
+var image = intArrayOf(R.drawable.ic_baseline_language_24, R.drawable.ic_baseline_color_lens_24, R.drawable.ic_baseline_dvr_24, R.drawable.ic_baseline_music_note_24, R.drawable.ic_baseline_videogame_asset_24, R.drawable.ic_baseline_apps_24)
 
 lateinit var sharedPreferences: SharedPreferences
 val themeKey = "currentTheme"; val langKey = "currentLang"
@@ -61,6 +64,7 @@ class FreeFragment : ListFragment() {
         return view
     }
 
+    //언어, 테마 색, 음악, 게임, 다른 옵션 순
     override fun onListItemClick(l: ListView, v: View, position: Int, id: Long) {
         if (position == 0){
             val intent = Intent(requireContext(), LanguageActivity::class.java)
@@ -71,14 +75,20 @@ class FreeFragment : ListFragment() {
             startActivity(intent)
         }
         if(position == 2){
-            val intent = Intent(requireContext(), SettingsActivity::class.java)
-            startActivity(intent)
+            startActivity(Intent(Intent.ACTION_VIEW, Uri.parse("https://www.naver.com")))
         }
         if(position == 3){
             val intent = Intent(requireContext(), MusicMainActivity::class.java)
             startActivity(intent)
         }
-
+        if(position == 4){
+            val intent = Intent(requireContext(), GamesActivity::class.java)
+            startActivity(intent)
+        }
+        if(position == 5){
+            val intent = Intent(requireContext(), SettingsActivity::class.java)
+            startActivity(intent)
+        }
     }
 
 }
@@ -116,5 +126,6 @@ class CustomAdaptor(private val context: Activity): BaseAdapter() {
     override fun getCount(): Int {
         return image.size
     }
+
 
 }

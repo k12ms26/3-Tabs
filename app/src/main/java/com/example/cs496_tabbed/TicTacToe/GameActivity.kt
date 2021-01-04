@@ -1,8 +1,7 @@
-package com.example.cs496_tabbed.game
+package com.example.cs496_tabbed.TicTacToe
 
 import android.content.Context
 import android.content.SharedPreferences
-import android.icu.text.Transliterator
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View

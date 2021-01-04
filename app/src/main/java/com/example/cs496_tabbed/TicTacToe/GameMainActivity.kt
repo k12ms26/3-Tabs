@@ -1,4 +1,4 @@
-package com.example.cs496_tabbed.game
+package com.example.cs496_tabbed.TicTacToe
 
 import android.content.Context
 import android.content.Intent
@@ -7,7 +7,6 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
 import android.widget.TextView
-import com.example.cs496_tabbed.MainActivity
 import com.example.cs496_tabbed.R
 import kotlinx.android.synthetic.main.activity_game_main.*
 

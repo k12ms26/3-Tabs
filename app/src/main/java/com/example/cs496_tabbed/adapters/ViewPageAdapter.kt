@@ -1,9 +1,10 @@
-package com.example.cs496_tabbed
+package com.example.cs496_tabbed.adapters
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentStatePagerAdapter
+import com.example.cs496_tabbed.fragments.ImageFragment
 
 
 class ViewPageAdapter(fm: FragmentManager, var images: List<Int>) :

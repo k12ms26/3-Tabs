@@ -1,4 +1,4 @@
-package com.example.cs496_tabbed.game
+package com.example.cs496_tabbed.TicTacToe
 
 class GameManager {
 

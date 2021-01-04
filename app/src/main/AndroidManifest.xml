@@ -12,14 +12,15 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Color0">
-        <activity android:name=".game.GameActivity"></activity>
-        <activity android:name=".game.GameMainActivity" />
+        <activity android:name=".TicTacToe.GameActivity"></activity>
+        <activity android:name=".TicTacToe.GameMainActivity" />
         <activity android:name=".musicplayer.MusicMainActivity" />
         <activity android:name=".musicplayer.MusicActivity"/>
         <activity android:name=".ThemeActivity" />
         <activity android:name=".LanguageActivity" />
         <activity android:name=".ViewPagerActivity" />
         <activity android:name=".SettingsActivity" />
+        <activity android:name=".GamesActivity" />
         <activity
             android:name=".MainActivity"
             android:label="@string/app_name">
