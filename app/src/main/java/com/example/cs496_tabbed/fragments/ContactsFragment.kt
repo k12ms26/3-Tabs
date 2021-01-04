@@ -16,7 +16,7 @@ import androidx.fragment.app.ListFragment
 import com.example.cs496_tabbed.R
 
 class ContactsFragment : ListFragment() {
-    lateinit var NumberArray: Array<String?>; lateinit var NameArray: Array<String?>
+    lateinit var ContactArray: Array<String?>//lateinit var NumberArray: Array<String?>; lateinit var NameArray: Array<String?>
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -35,7 +35,7 @@ class ContactsFragment : ListFragment() {
 
         // Bring in Contacts info to build an array of names in contacts
         var i = 0
-        val ContactsList = arrayOfNulls<String>(cursor!!.count); // val NameFromContacts = arrayOfNulls<String>(cursor.count); val NumberFromContacts = arrayOfNulls<String>(cursor.count);
+        val ContactsList = arrayOfNulls<String>(cursor!!.count);// val NameFromContacts = arrayOfNulls<String>(cursor.count); val NumberFromContacts = arrayOfNulls<String>(cursor.count);
         val nameFieldColumnIndex = cursor.getColumnIndex(ContactsContract.CommonDataKinds.Phone.DISPLAY_NAME)
         val numberFieldColumnIndex = cursor.getColumnIndex(ContactsContract.CommonDataKinds.Phone.NUMBER)
 
@@ -43,10 +43,11 @@ class ContactsFragment : ListFragment() {
             val contactName = cursor.getString(nameFieldColumnIndex)
             val contactNumber = cursor.getString(numberFieldColumnIndex)
             //NameFromContacts[i] = contactName
-            //NumberFromContacts[i]
+            //NumberFromContacts[i] = contactNumber
             ContactsList[i] = contactName + "\n" + contactNumber
             i++
         }
+        ContactArray = ContactsList
         //NumberArray = NumberFromContacts    // Assign array of numbers from contacts
         //NameArray = NameFromContacts
 
@@ -78,7 +79,7 @@ class ContactsFragment : ListFragment() {
 
 
     override fun onListItemClick(l: ListView, v: View, position: Int, id: Long){
-        val texttoShare = "Name: " + NameArray[position] + "\n" + NumberArray[position]
+        val texttoShare = ContactArray[position]//"Name: " + NameArray[position] + "\n" + NumberArray[position]
 
         val intent = Intent()
         intent.action = Intent.ACTION_SEND
