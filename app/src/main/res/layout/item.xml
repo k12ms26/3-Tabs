@@ -7,7 +7,7 @@
     android:gravity="center"
     tools:context=".ImageFragment">
 
-    <!-- image viwer to view the images -->
+    <!-- viewpager 안에 있는 imageview -->
     <ImageView
         android:id="@+id/imageViewMain"
         android:layout_width="match_parent"
