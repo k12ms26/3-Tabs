@@ -9,16 +9,17 @@ import android.widget.ListView
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import com.example.cs496_tabbed.TicTacToe.GameMainActivity
+import com.example.cs496_tabbed.mathquiz.Options
 
 class GamesActivity : AppCompatActivity() {
     lateinit var sharedPreferences: SharedPreferences
     val themeKey = "currentTheme";val langKey = "currentLang"
     var listOfGames = mutableListOf<String>()
-    val listOfGames_eng = mutableListOf("Tic Tac Toe", "2048")
-    val listOfGames_kor = mutableListOf("틱택토", "2048")
-    val listOfGames_chi = mutableListOf("井字游戏", "2048") // NEED MODIFICATION
-    val listOfGames_fra = mutableListOf("Jeu de Morpion", "2048") // NEED MODIFICATION
-    val listOfGames_esp = mutableListOf("Tres en Línea", "2048") // NEED MODIFICATION
+    val listOfGames_eng = mutableListOf("Tic Tac Toe", "Math Quiz")
+    val listOfGames_kor = mutableListOf("틱택토", "산수 퀴즈")
+    val listOfGames_chi = mutableListOf("井字游戏", "算术问答") // NEED MODIFICATION
+    val listOfGames_fra = mutableListOf("Jeu de Morpion", "Quiz mathématique") // NEED MODIFICATION
+    val listOfGames_esp = mutableListOf("Tres en Línea", "concurso de matemáticas") // NEED MODIFICATION
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -75,7 +76,9 @@ class GamesActivity : AppCompatActivity() {
                     val intent = Intent(this, GameMainActivity::class.java)
                     startActivity(intent)
                 }
-                else -> {
+                1 -> {
+                    val intent = Intent(this, Options::class.java)
+                    startActivity(intent)
                 }
             }
         }

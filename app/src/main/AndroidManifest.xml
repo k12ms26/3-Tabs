@@ -12,7 +12,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Color0">
-        <activity android:name=".TicTacToe.GameActivity"></activity>
+        <activity android:name=".TicTacToe.GameActivity" />
         <activity android:name=".TicTacToe.GameMainActivity" />
         <activity android:name=".musicplayer.MusicMainActivity" />
         <activity android:name=".musicplayer.MusicActivity"/>
@@ -30,6 +30,22 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity
+            android:name=".mathquiz.NormalQuizActivity"
+            android:label="@string/app_name"
+            android:screenOrientation="portrait"/>
+        <activity
+            android:name=".mathquiz.NoTimeQuizActivity"
+            android:label="@string/app_name"
+            android:screenOrientation="portrait"/>
+        <activity
+            android:name=".mathquiz.Options"
+            android:label="@string/app_name"
+            android:screenOrientation="portrait"/>
+        <activity
+            android:name=".mathquiz.ResultActivity"
+            android:label="@string/app_name"
+            android:screenOrientation="portrait"/>
     </application>
 
 </manifest>
