@@ -19,6 +19,7 @@
         android:layout_height="20dp"
         android:textSize="16sp"
         android:text="Tap to share contact details"
+        android:id="@+id/TextViewInfo"
         android:gravity="center" />
     <ListView
         android:layout_width="match_parent"

@@ -1,7 +1,9 @@
 package com.example.cs496_tabbed.fragments
 
 import android.content.ContentUris
+import android.content.Context
 import android.content.Intent
+import android.content.SharedPreferences
 import android.database.Cursor
 import android.os.Bundle
 import android.provider.Contacts
@@ -17,11 +19,34 @@ import com.example.cs496_tabbed.R
 
 class ContactsFragment : ListFragment() {
     lateinit var ContactArray: Array<String?>//lateinit var NumberArray: Array<String?>; lateinit var NameArray: Array<String?>
+    lateinit var sharedPreferences: SharedPreferences
+    val themeKey = "currentTheme";val langKey = "currentLang"
+
+    var listOfSet = mutableListOf<String>()
+    val listOfSet_eng = mutableListOf("Search","Tap to share contact details", "Item not found")
+    val listOfSet_kor = mutableListOf("검색","탭해서 연락처 공유","번호가 없습니다")
+    val listOfSet_chi = mutableListOf("搜索", "点按分享", "电话号码没有了") // NEED MODIFICATION
+    val listOfSet_fra = mutableListOf("Chercher", "Appuyez pour partager", "Pas de numéro de téléphone") // NEED MODIFICATION
+    val listOfSet_esp = mutableListOf("Buscar", "Toca para compartir", "Sin numero de telefono") // NEED MODIFICATION
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+        // Set Language
+        sharedPreferences = this.activity!!.getSharedPreferences(
+            "ThemePref",
+            Context.MODE_PRIVATE
+        )
+
+        when(sharedPreferences.getString(langKey, "eng")){
+            "eng" -> listOfSet = listOfSet_eng
+            "kor" -> listOfSet = listOfSet_kor
+            "chi" -> listOfSet = listOfSet_chi
+            "fra" -> listOfSet = listOfSet_fra
+            "esp" -> listOfSet = listOfSet_esp
+        }
+
         // Inflate the layout for this fragment
         val view = inflater.inflate(R.layout.fragment_contacts, container, false)
 
@@ -62,7 +87,7 @@ class ContactsFragment : ListFragment() {
                 if (ContactsList.contains(query)) {
                     adapter.filter.filter(query)
                 } else {
-                    Toast.makeText(activity, "Item not found", Toast.LENGTH_LONG).show()
+                    Toast.makeText(activity, listOfSet[2], Toast.LENGTH_LONG).show()
                 }
                 return false
             }
@@ -71,7 +96,10 @@ class ContactsFragment : ListFragment() {
                 return false
             }
         })
+        search.queryHint = listOfSet[0]
 
+        val InfoText = view.findViewById<TextView>(R.id.TextViewInfo)
+        InfoText.text = listOfSet[1]
 
 
         return view
