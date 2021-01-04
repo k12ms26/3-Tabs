@@ -1,19 +1,12 @@
 package com.example.cs496_tabbed.mathquiz
 
-import android.app.Activity
 import android.content.Context
-import android.content.Intent
 import android.content.SharedPreferences
-import android.os.Build
 import android.os.Bundle
 import android.view.View
-import android.widget.LinearLayout
 import android.widget.TextView
-import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.app.ActivityCompat
 import com.example.cs496_tabbed.R
-import org.w3c.dom.Text
 
 /**
  * Created by acer on 06-Apr-16.
@@ -47,13 +40,4 @@ class ResultActivity : AppCompatActivity() {
         textResult.text = "Your score is  $score.\nThanks for\nplaying game."
     }
 
-    private fun setActivityBackgroundColor(color: Int) {
-        val resultLayout = findViewById<LinearLayout>(R.id.resultLayout)
-    }
-
-    /*fun playagain(o: View?) {
-        ActivityCompat.finishAffinity(this)
-        /*val intent = Intent(this, Options::class.java)
-        startActivity(intent)*/
-    }*/
 }

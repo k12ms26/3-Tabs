@@ -1,19 +1,10 @@
 package com.example.cs496_tabbed.mathquiz
 
-/*import com.example.quizgametmp.Question.qUESTION
-import com.example.quizgametmp.Question.aNSWER
-import com.example.quizgametmp.Question.oPTA
-import com.example.quizgametmp.Question.oPTB
-import com.example.quizgametmp.Question.oPTC
-import com.example.quizgametmp.Question.iD*/
 import android.database.sqlite.SQLiteOpenHelper
-import com.example.cs496_tabbed.mathquiz.QuizHelper
 import android.database.sqlite.SQLiteDatabase
-import com.example.cs496_tabbed.mathquiz.Question
 import android.content.ContentValues
 import android.content.Context
 import android.content.SharedPreferences
-import androidx.appcompat.app.AppCompatActivity
 import java.util.ArrayList
 
 /**
@@ -31,7 +22,6 @@ class QuizHelper(context: Context?) : SQLiteOpenHelper(context, DATABASE_NAME, n
                 + KEY_OPTB + " TEXT, " + KEY_OPTC + " TEXT)")
         db.execSQL(sql)
         addQuestion()
-        // db.close();
     }
 
     private fun addQuestion() {

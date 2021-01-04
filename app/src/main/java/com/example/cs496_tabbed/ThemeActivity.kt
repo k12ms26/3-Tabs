@@ -1,20 +1,13 @@
 package com.example.cs496_tabbed
 
-import android.app.Activity
-import android.app.Application
 import android.content.Context
 import android.content.Intent
 import android.content.SharedPreferences
-import android.content.res.Resources
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
-import android.view.View
 import android.widget.ArrayAdapter
-import android.widget.Button
 import android.widget.ListView
 import android.widget.TextView
-import com.example.cs496_tabbed.MainActivity.Companion.Lang
 import com.example.cs496_tabbed.MainActivity.Companion.Selected_Color
 
 open class ThemeActivity : AppCompatActivity() {
@@ -107,15 +100,4 @@ open class ThemeActivity : AppCompatActivity() {
         }
 
     }
-
-    /*
-    override fun onResume() {
-        super.onResume()
-        when (sharedPreferences.getString(themeKey, "Color0")) {
-            "Color0" ->  theme.applyStyle(R.style.Color0, true)
-            "Color1" ->  theme.applyStyle(R.style.Color1, true)
-            "Color2" ->  theme.applyStyle(R.style.Color2, true)
-        }
-    }
-    */
 }

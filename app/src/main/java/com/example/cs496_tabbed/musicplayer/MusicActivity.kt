@@ -4,7 +4,6 @@ import android.annotation.SuppressLint
 import android.content.Context
 import android.content.SharedPreferences
 import android.media.MediaPlayer
-import android.net.Uri
 import android.os.Bundle
 import android.os.Handler
 import android.os.Message
@@ -19,7 +18,6 @@ import com.example.cs496_tabbed.MainActivity.Companion.Music_to_Play
 import com.example.cs496_tabbed.MainActivity.Companion.mp_Array
 import com.example.cs496_tabbed.R
 import kotlinx.android.synthetic.main.activity_music.*
-import org.w3c.dom.Text
 
 /*
     When Adding Music refer to

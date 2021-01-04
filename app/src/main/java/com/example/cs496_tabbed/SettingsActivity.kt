@@ -15,15 +15,13 @@ import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
-import androidx.core.content.ContextCompat
-import com.example.cs496_tabbed.TicTacToe.GameMainActivity
 import java.util.*
 
 class SettingsActivity : AppCompatActivity() {
     var listOfSet = mutableListOf<String>()
     val listOfSet_eng = mutableListOf("Edit Date", "Edit Time", "Finish App")
     val listOfSet_kor = mutableListOf("날짜 수정", "시간 수정", "앱 종료")
-    val listOfSet_chi = mutableListOf("日期修正","时间修正","浏览器", "结束") // NEED MODIFICATION
+    val listOfSet_chi = mutableListOf("日期修正","时间修正","结束") // NEED MODIFICATION
     val listOfSet_fra = mutableListOf("Modification la Date", "Modification du Temps","Fin") // NEED MODIFICATION
     val listOfSet_esp = mutableListOf("Modificación de Fecha", "Modificación de Tiempo","Conclusión") // NEED MODIFICATION
 
@@ -93,13 +91,6 @@ class SettingsActivity : AppCompatActivity() {
                 1 -> showTimePicker()
                 2 -> showAlert()
             }
-
-            /*when (item.toString()) {
-                "Edit Date" -> showDatePicker()
-                "Edit Time" -> showDatePicker()
-                "Browser" -> showDatePicker()
-                "Finish App" -> showDatePicker()
-            }*/
         }
     }
     private fun showAlert() {
@@ -172,5 +163,4 @@ class SettingsActivity : AppCompatActivity() {
     private fun showWeb() {
         startActivity(Intent(Intent.ACTION_VIEW, Uri.parse("https://www.naver.com")))
     }
-
 }
