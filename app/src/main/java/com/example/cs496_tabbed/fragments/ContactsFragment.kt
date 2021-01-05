@@ -82,8 +82,6 @@ class ContactsFragment : ListFragment() {
                 search.clearFocus()
                 if (ContactsList.contains(query)) {
                     adapter.filter.filter(query)
-                } else {
-                    Toast.makeText(activity, listOfSet[2], Toast.LENGTH_LONG).show()
                 }
                 return false
             }
