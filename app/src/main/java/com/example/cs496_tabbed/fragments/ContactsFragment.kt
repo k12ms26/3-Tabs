@@ -96,6 +96,12 @@ class ContactsFragment : ListFragment() {
                 return false
             }
         })
+
+        // Change the iconified setting to false to make the search bar work by clicking any part of the searchview
+        search.setOnClickListener {
+            search.isIconified = false
+        }
+
         search.queryHint = listOfSet[0]
 
         val InfoText = view.findViewById<TextView>(R.id.TextViewInfo)
