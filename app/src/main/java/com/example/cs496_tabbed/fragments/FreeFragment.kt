@@ -12,11 +12,8 @@ import android.view.View
 import android.view.ViewGroup
 import android.view.inputmethod.InputMethodManager
 import android.widget.*
-import androidx.core.content.ContextCompat
-import androidx.core.content.ContextCompat.startActivity
 import androidx.fragment.app.ListFragment
 import com.example.cs496_tabbed.*
-import com.example.cs496_tabbed.musicplayer.MusicActivity
 import com.example.cs496_tabbed.musicplayer.MusicMainActivity
 
 val settings = arrayOf("Language", "Set Theme Color", "Browser", "Music", "Games", "Another Options")

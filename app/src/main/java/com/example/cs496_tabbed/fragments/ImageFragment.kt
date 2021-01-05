@@ -41,6 +41,7 @@ class ImageFragment : Fragment() {
         return v
     }
 
+    // Keyboard Goes Down
     override fun onStart() {
         super.onStart()
         val imm = requireActivity().getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
