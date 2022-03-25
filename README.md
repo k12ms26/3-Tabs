@@ -1,5 +1,5 @@
 # 몰입캠프 1주차 [(시연영상)](https://drive.google.com/file/d/14So6S4x1cBvso9hSGsoUcKgws5eADIev/view)
-### 기간: 2020.12 (일주일)
+### 기간: 2020.12.29~2021.01.06
 ### 사용한 프로그래밍 언어: Kotlin
 
 ### 총 3개의 tabs
